@@ -108,6 +108,8 @@ body,table,td,th {
 			</td>
 		</tr>
 	</table>
+	<table>
+
 	<%@ page import ="java.sql.*" %>
 	<%
 	    Class.forName("com.mysql.jdbc.Driver");
@@ -116,17 +118,17 @@ body,table,td,th {
 	    Statement st = con.createStatement();
 	    ResultSet rs;
 	    rs = st.executeQuery("SELECT title FROM Thread ORDER BY title, DESC, LIMIT 10");
-	    while (rs.next()) {
-    		out.println("<table>");
-    		while(rs.next()){
-    			out.println("<tr>");
-    			out.println("<td>");
-    			out.println(rs.getString("title"));   
-    			out.println("</td>");
-    			out.println("<tr>");
-	    	}
-	    }
+
+   		while(rs.next()){
+   			out.println("<tr>");
+   			out.println("<td>");
+   			out.println(rs.getString("title"));   
+   			out.println("</td>");
+   			out.println("<tr>");
+    	}
+
 	%>
+	</table>
 	
 </body>
 </div>
