@@ -13,8 +13,120 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Insert title here</title>
-	</head>
+		<style type="text/css">
+			a:link
+			{
+			color:#0299d2;
+			}
+			a:visited
+			{
+			 color: #0299d2;
+			}
+			#nav    
+			{
+			background:#444446;
+			padding:5px;
+			border-bottom:solid 1px #222;
+			
+			}
+			#nav td
+			{
+			
+				font-size:2em;
+				width:20%;
+				font-size:2em;
+				height: auto;
+			}
+			
+			
+			#nav table
+			{
+			 width:100%;
+			 border-collapse: collapse;
+			}
+			
+			#nav tr
+			{
+				border: 0 px;
+				height:auto;
+			}
+			#footer
+			{
+				background:#444446;
+				padding:5px;
+				border-bottom:solid 1px #222;
+				position:fixed;
+				left:0px;
+				bottom:0px;
+				height:20px;
+				width:100%;
+				
+			} 
+				
+			}
+			#footer td
+			{
+				text-align:center;
+				width:20%;
+				font-size:70%;
+				height: auto;
+			}
+			
+			
+			#footer table
+			{
+			 width:100%;
+			 border-collapse: collapse;
+			}
+			
+			#footer tr
+			{
+				border: 0 px;
+				height:auto;
+			}
+			body,table,td,th {
+				font-family: Verdana, Geneva, sans-serif;	
+			}
+			
+		</style>
+	</head>		
 		<body>
+			<div id = "nav">
+				<table>
+					<tr>
+						<td>
+						<a href= "Home.html">Home</a>
+						</td>
+						<td>
+						<a href = "forum.jsp">Forum</a>
+						</td>
+						<td>
+						<a href = "Account.jsp"> My Account</a>
+						</td>
+						<td>
+						<a href = "login.jsp"> Login</a>
+						</td>
+						<td>
+						<a href = "reg.jsp">Register</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id = "footer">
+				<table>
+					<tr>
+						<td>
+							<a href = "Admin.jsp">Admin Tools</a>
+						</td>
+						<td>
+							<a href = "Mod.jsp">Moderator Tools</a>
+						</td>
+						<td>
+							<a href = "Sales.jsp"> Sales Tools</a>
+						</td>
+					</tr>
+				</table>
+			</div>
 			<%
 				//Create a connection string
 				String url = "jdbc:mysql://cs336-18.cs.rutgers.edu:3306/CS336_Project";
@@ -25,17 +137,27 @@
 			    Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
 		    	String current_user = (String) session.getAttribute("userid");
 		    	
-		    	Class.forName("com.mysql.jdbc.Driver");
-			    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CS336_Project",
-			            "csuser", "csda0467");
 			    Statement st = con.createStatement();
 			    ResultSet rs;
 			    rs = st.executeQuery("SELECT uname FROM Users U WHERE uname = ' "+current_user+" + ' and isAdmin = 1");
 			
 		   		if(rs.next()){
-		   			
+		   			%>
+		   			<form action = "giveModPowers.jsp">
+		   				Username: <input type="text"> <input type="submit" value = "Give Mod Powers">
+		   			</form>
+		   			<form action = "makeTopic.jsp">
+		   				Topic: <input type="text"> <input type="submit" value = "Make topic">
+		   			</form>
+		   			<form action = "giveModPowers.jsp">
+		   				Subtopic: <input type="text"> of Topic: <input type= "text"> <input type="submit" value = "Make subtopic">
+		   			</form>
+		   			<%
+		   		}else{
+		   			out.println("You are not an admin <a href='index.jsp'>Return to home</a>");
 		   		}
 		    	
 			 %>
 		</body>
+		
 </html>
