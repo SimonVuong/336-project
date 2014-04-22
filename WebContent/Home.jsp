@@ -112,17 +112,19 @@ body,table,td,th {
 	<%
 	    Class.forName("com.mysql.jdbc.Driver");
 	    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CS336_Project",
-	            "root", "csda0467");
+	            "csuser", "csda0467");
 	    Statement st = con.createStatement();
 	    ResultSet rs;
 	    rs = st.executeQuery("SELECT title FROM Thread ORDER BY title, DESC, LIMIT 10");
-	    if (rs.next()) {
-	        session.setAttribute("userid", userid);
-	        out.println("welcome " + userid);
-	        //out.println("<a href='logout.jsp'>Log out</a>");
-	        response.sendRedirect("success.jsp");
-	    } else {
-	        out.println("Invalid username or password <a href='index.jsp'>try again</a>");
+	    while (rs.next()) {
+    		out.println("<table>");
+    		while(rs.next()){
+    			out.println("<tr>");
+    			out.println("<td>");
+    			out.println(rs.getString("title"));   
+    			out.println("</td>");
+    			out.println("<tr>");
+	    	}
 	    }
 	%>
 	
