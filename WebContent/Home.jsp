@@ -117,7 +117,7 @@ body,table,td,th {
 	            "csuser", "csda0467");
 	    Statement st = con.createStatement();
 	    ResultSet rs;
-	    rs = st.executeQuery("SELECT title FROM Thread ORDER BY title, DESC, LIMIT 10");
+	    rs = st.executeQuery("SELECT title FROM Thread ORDER BY votes DESC LIMIT 10");
 
    		while(rs.next()){
    			out.println("<tr>");
