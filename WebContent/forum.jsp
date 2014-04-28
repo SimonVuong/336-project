@@ -79,7 +79,7 @@ body,table,td,th {
 			</td>
 		</tr>
 	</table>
-</body>
+
 </div>
 
 <%
@@ -110,7 +110,7 @@ body,table,td,th {
     			{
     				out.println("<tr>");
         			out.println("<td>");
-        			out.println("<a href = \"Threads.jsp?id="+sub_rs.getString("sname")+"\">"+sub_rs.getString("sname")+"</a>");
+        			out.println("<a href = \"Threads.jsp?subtopic="+sub_rs.getString("sname")+"\">"+sub_rs.getString("sname")+"</a>");
         			out.println("</td>");
     			}
     			
@@ -124,3 +124,5 @@ body,table,td,th {
 		out.println(e);
 	}
 %>
+</body>
+</html>
