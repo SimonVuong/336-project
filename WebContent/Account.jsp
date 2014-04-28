@@ -81,7 +81,6 @@ body,table,td,th {
 			</td>
 		</tr>
 	</table>
-</body>
 </div>
 <br>
 <%
@@ -129,7 +128,7 @@ try {
 	    		out.println("</tr>");
 	    		out.println("</table>");
 	    		
-	    		out.println("<div>");
+	    		out.println("</div>");
 	    		rs.close();
 	    		con.close();
 	    	}
@@ -147,4 +146,5 @@ catch(Exception e)
 		
 	}
 	%>
+	</body>
 </html>
