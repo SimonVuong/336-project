@@ -10,17 +10,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Make a Thread!</title>
+<title>Insert title here</title>
 </head>
 <body>
-<form name = "thread_create" action = "TCMake.jsp" method="get">
-Thread Title: <input type = "text" name = "firstname">
-<br>
-<textarea name = "comment" placeholder ="Enter Comment" rows="10" cols="30" maxlength = "5000">
-</textarea>
-<br>
-<input type = "submit" value = "Create">
-</form>
 <%
    if(session.getAttribute("userid")==null)
 	{
