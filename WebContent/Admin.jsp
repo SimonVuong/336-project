@@ -95,7 +95,7 @@
 				<table>
 					<tr>
 						<td>
-						<a href= "Home.html">Home</a>
+						<a href= "Home.jsp">Home</a>
 						</td>
 						<td>
 						<a href = "forum.jsp">Forum</a>
@@ -139,7 +139,7 @@
 		    	
 			    Statement st = con.createStatement();
 			    ResultSet rs;
-			    rs = st.executeQuery("SELECT uname FROM Users U WHERE uname = ' "+current_user+" + ' and isAdmin = 1");
+			    rs = st.executeQuery("SELECT * FROM Users U WHERE uname = '"+session.getAttribute("userid")+"' and isAdmin = 1" );
 			
 		   		if(rs.next()){
 		   			%>
@@ -149,7 +149,7 @@
 		   			<form action = "makeTopic.jsp">
 		   				Topic: <input type="text"> <input type="submit" value = "Make topic">
 		   			</form>
-		   			<form action = "giveModPowers.jsp">
+		   			<form action = "makeSubtopic.jsp">
 		   				Subtopic: <input type="text"> of Topic: <input type= "text"> <input type="submit" value = "Make subtopic">
 		   			</form>
 		   			<%

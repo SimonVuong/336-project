@@ -47,7 +47,7 @@ body,table,td,th {
 	<table>
 		<tr>
 			<td>
-			<a href= "Home.html">Home</a>
+			<a href= "Home.jsp">Home</a>
 			</td>
 			<td>
 			<a href = "forum.jsp">Forum</a>

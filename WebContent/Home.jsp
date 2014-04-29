@@ -87,12 +87,13 @@ body,table,td,th {
 
 </style>
 </head>
-<div id = "nav">
+
 <body>
+<div id = "nav">
 	<table>
 		<tr>
 			<td>
-			<a href= "Home.html">Home</a>
+			<a href= "Home.jsp">Home</a>
 			</td>
 			<td>
 			<a href = "forum.jsp">Forum</a>
@@ -108,6 +109,7 @@ body,table,td,th {
 			</td>
 		</tr>
 	</table>
+	</div>
 	<table>
 
 
@@ -130,22 +132,24 @@ body,table,td,th {
 	%>
 	</table>
 	
+	
+
+	<br>
+	<div id = "footer">
+	<table>
+	<tr>
+	<td>
+	<a href = "Admin.jsp">Admin Tools</a>
+	</td>
+	<td>
+	<a href = "Mod.jsp">Moderator Tools</a>
+	</td>
+	<td>
+	<a href = "Sales.jsp"> Sales Tools</a>
+	</td>
+	</tr>
+	</table>
+	</div>
 </body>
-</div>
-<br>
-<div id = "footer">
-<table>
-<tr>
-<td>
-<a href = "Admin.jsp">Admin Tools</a>
-</td>
-<td>
-<a href = "Mod.jsp">Moderator Tools</a>
-</td>
-<td>
-<a href = "Sales.jsp"> Sales Tools</a>
-</td>
-</tr>
-</table>
-</div>
+
 </html>
