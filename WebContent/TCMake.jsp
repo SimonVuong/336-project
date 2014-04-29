@@ -23,6 +23,12 @@
 		    Connection con = DriverManager.getConnection(url, "csuser", "csda0467");
 	   		String chris= request.getParameter("comment");
 	   		out.println(chris);
+	   		String chri= request.getParameter("threadname");
+	   		out.println(chri);
+	   		out.println("<br>");
+	   		String chr= request.getParameter("threa");
+	   		out.println(chr);
+	   		out.println(session.getAttribute("subtopic"));
 	   		//TODO make user give first comment
 	}
 	catch(Exception e)

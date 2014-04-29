@@ -13,8 +13,8 @@
 <title>Make a Thread!</title>
 </head>
 <body>
-<form name = "thread_create" action = "TCMake.jsp" method="get">
-Thread Title: <input type = "text" name = "firstname">
+<form name = "thread_create" action = "TCMake.jsp?subtopic=" method="get">
+Thread Title: <input type = "text" name = "threadname">
 <br>
 <textarea name = "comment" placeholder ="Enter Comment" rows="10" cols="30" maxlength = "5000">
 </textarea>
@@ -27,6 +27,11 @@ Thread Title: <input type = "text" name = "firstname">
 	 	String site = "login.jsp";   //sends them to the login page if the user isnt logged in
 		response.sendRedirect(site);
 	}
+   else
+   {
+	   String sub_topic = request.getParameter("subtopic");
+	   session.setAttribute("subtopic", sub_topic);
+   }
 %>
 </body>
 </html>
