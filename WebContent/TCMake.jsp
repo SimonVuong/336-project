@@ -29,7 +29,7 @@
 	   		}
 	   		else
 	   		{
-	   			String session = session.getAttribute("subtopic");
+	   			String sesssion = session.getAttribute("subtopic");
 	   			Statement st = con.createStatement();
 	   		   // int i = st.executeUpdate("insert into Threads()");  this auto increments, how do i get that value?
 	   		    //is there a way to do any god damn error checking and tell it to the user

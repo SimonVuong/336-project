@@ -80,7 +80,7 @@ body,table,td,th {
 		</table>
 	</div>
 <%
-	String userid = request.getPrameter("giveModPowers");
+	String userid = request.getParameter("giveModPowers");
 	//Create a connection string
 	String url = "jdbc:mysql://cs336-18.cs.rutgers.edu:3306/CS336_Project";
 	//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
@@ -88,7 +88,7 @@ body,table,td,th {
 	//Create a connection to your DB
 	Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
 	
-	Statement st = con.createStatement();
+	Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 	ResultSet rs;
 	rs = st.executeQuery("select * from Users where uname=  '"    + userid +    "' ");
 	 if (rs.next()) {
