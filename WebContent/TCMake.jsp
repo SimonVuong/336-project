@@ -21,14 +21,21 @@
 	   	
 	   	//Create a connection to your DB
 		    Connection con = DriverManager.getConnection(url, "csuser", "csda0467");
-	   		String chris= request.getParameter("comment");
-	   		out.println(chris);
-	   		String chri= request.getParameter("threadname");
-	   		out.println(chri);
-	   		out.println("<br>");
-	   		String chr= request.getParameter("threa");
-	   		out.println(chr);
-	   		out.println(session.getAttribute("subtopic"));
+	   		String threadname= request.getParameter("threadname");
+	   		if(threadname==null)
+	   		{
+	   			//this is just a comment, add it like normal
+	   			
+	   		}
+	   		else
+	   		{
+	   			String session = session.getAttribute("subtopic");
+	   			Statement st = con.createStatement();
+	   		    int i = st.executeUpdate("insert into Threads()");  //this auto increments, how do i get that value?
+	   		    //is there a way to do any god damn error checking and tell it to the user
+	   		    int j = st.executeUpdate("insert into Comments")
+	   			//try doing Scope_Identity()?
+	   		}
 	   		//TODO make user give first comment
 	}
 	catch(Exception e)
