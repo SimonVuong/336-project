@@ -143,18 +143,18 @@
 			
 		   		if(rs.next()){
 		   			%>
-		   			<form action = "giveModPowers.jsp">
-		   				Username: <input type="text"> <input type="submit" value = "Give Mod Powers">
+		   			<form method = "post" action = "giveModPowers.jsp">
+		   				Username: <input type="text" name = "giveModPowers" value = ""> <input type="submit" value = "Give Mod Powers">
 		   			</form>
-		   			<form action = "makeTopic.jsp">
-		   				Topic: <input type="text"> <input type="submit" value = "Make topic">
+		   			<form method = "post" action = "makeTopic.jsp">
+		   				Topic: <input type="text" name= "makeTopic" value = ""> <input type="submit" value = "Make topic">
 		   			</form>
-		   			<form action = "makeSubtopic.jsp">
-		   				Subtopic: <input type="text"> of Topic: <input type= "text"> <input type="submit" value = "Make subtopic">
+		   			<form method = "post" action = "makeSubtopic.jsp">
+		   				Subtopic: <input type="text" name = "makeSubtopic"> of Topic: <input type= "text"> <input type="submit" value = "Make subtopic">
 		   			</form>
 		   			<%
 		   		}else{
-		   			out.println("You are not an admin <a href='index.jsp'>Return to home</a>");
+		   			out.println("You are not an admin <a href='Home.jsp'>Return to home</a>");
 		   		}
 		    	
 			 %>
