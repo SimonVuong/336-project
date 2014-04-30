@@ -31,9 +31,9 @@
 	   		{
 	   			String session = session.getAttribute("subtopic");
 	   			Statement st = con.createStatement();
-	   		    int i = st.executeUpdate("insert into Threads()");  //this auto increments, how do i get that value?
+	   		   // int i = st.executeUpdate("insert into Threads()");  this auto increments, how do i get that value?
 	   		    //is there a way to do any god damn error checking and tell it to the user
-	   		    int j = st.executeUpdate("insert into Comments")
+	   		    //int j = st.executeUpdate("insert into Comments")
 	   			//try doing Scope_Identity()?
 	   		}
 	   		//TODO make user give first comment
