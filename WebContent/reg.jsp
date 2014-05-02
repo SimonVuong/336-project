@@ -1,4 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+if(session.getAttribute("userid")!=null)
+	{
+	String site = "Account.jsp";
+	response.sendRedirect(site);
+	}
+	%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,10 +77,8 @@ body,table,td,th {
 			</td>
 		</tr>
 	</table>
-</body>
 </div>
 <br>
-    <body>
         <form method="post" action="registration.jsp">
             <center>
             
@@ -93,5 +98,6 @@ body,table,td,th {
                         <p>Go back to Login: <a href="login.jsp">Login Here</a></p>
             </center>
         </form>
+        
     </body>
 </html>

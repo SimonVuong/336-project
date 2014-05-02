@@ -18,10 +18,11 @@
 		   String url = "jdbc:mysql://cs336-18.cs.rutgers.edu:3306/CS336_Project";
 	   	//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
 		    Class.forName("com.mysql.jdbc.Driver");
-	   	
+	   
 	   	//Create a connection to your DB
 		    Connection con = DriverManager.getConnection(url, "csuser", "csda0467");
 	   		String threadname= request.getParameter("threadname");
+	   		String comment = request.getParameter("comment");
 	   		if(threadname==null)
 	   		{
 	   			//this is just a comment, add it like normal
@@ -29,9 +30,25 @@
 	   		}
 	   		else
 	   		{
-	   			String sesssion = session.getAttribute("subtopic");
+	   			String subtopic = session.getAttribute("subtopic").toString();
+	   			String user = session.getAttribute("userid").toString();
 	   			Statement st = con.createStatement();
-	   		   // int i = st.executeUpdate("insert into Threads()");  this auto increments, how do i get that value?
+	   			out.println(threadname);
+	   			out.println(subtopic);
+	   			out.println("<br>");
+	   		    int i = 0;
+	   			i = st.executeUpdate("insert into Thread(title,sname) values ('"+threadname+"','"+subtopic+"')");
+	   		    st.executeUpdate("INSERT INTO Comment(user,contents,tid) values ('"+user+"','"+comment+"',LAST_INSERT_ID())");
+	   			if(i <=0)
+	   		    {
+	   		    	out.println("Sorry there was an error");  //this should never happen i think.
+	   		    }
+	   		    else
+	   		    {
+	   		    	
+	   		    	out.println("Good work");
+	   		    	
+	   		    }
 	   		    //is there a way to do any god damn error checking and tell it to the user
 	   		    //int j = st.executeUpdate("insert into Comments")
 	   			//try doing Scope_Identity()?
@@ -40,7 +57,7 @@
 	}
 	catch(Exception e)
 	{
-		out.println(e.getStackTrace());
+		out.print(e.getMessage());
 	}
 
    

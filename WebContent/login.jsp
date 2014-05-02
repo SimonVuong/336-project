@@ -22,49 +22,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hordor</title>
     </head>
-    <style type="text/css">
-
-a:link 
-{
-color:#0299d2;
-}
-a:visited
-{
- color: #0299d2;
-}
-#nav    
-{
-background:#444446;
-padding:5px;
-border-bottom:solid 1px #222;
-
-}
-#nav td
-{
-
-font-size:2em;
-width:20%;
-font-size:2em;
-height: auto;
-}
-
-
-#nav table
-{
- width:100%;
- border-collapse: collapse;
-}
-
-#nav tr
-{
-border: 0 px;
-height:auto;
-}
-body,table,td,th {
-	font-family: Verdana, Geneva, sans-serif;	
-}
-
-</style>
+<link rel = "stylesheet" type = "text/css" href = "Nav.css">
 </head>
 <div id = "nav">
 <body>
@@ -87,10 +45,8 @@ body,table,td,th {
 			</td>
 		</tr>
 	</table>
-</body>
 </div>
 <br>
-    <body>
         <form method="post" action="verify.jsp">
             <center>
             <table>
