@@ -21,11 +21,11 @@
 </form>
 <%
 	
-   //if(session.getAttribute("userid")==null)
-	//{
-	 //	String site = "login.jsp";   //sends them to the login page if the user isnt logged in
-		//response.sendRedirect(site);
-	//}
+  if(session.getAttribute("userid")==null)
+	{
+		String site = "login.jsp";   //sends them to the login page if the user isnt logged in
+		response.sendRedirect(site);
+	}
 %>
 </body>
 </html>
