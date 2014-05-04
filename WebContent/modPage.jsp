@@ -9,7 +9,7 @@
 
 <%
 	//if the user is not logged in as a mod, they will be sent to the login page;
-	if((Boolean) session.getAttribute("isMod")!=true)
+	if((Boolean) session.getAttribute("isMod")==null)
 		{
 			String site = "login.jsp";
 	    	response.sendRedirect(site);
