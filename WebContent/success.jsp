@@ -78,19 +78,22 @@ You are not logged in
 Welcome <%=session.getAttribute("userid")%>
 <br>
 <%  //prints out a welcome if someone is an admin/mod/salesman.  MUST CAST TO Boolean** %>
-<%if((Boolean)session.getAttribute("isAdmin")==true){ %>
+<%if((Boolean)session.getAttribute("isAdmin")!=null){
+	if((Boolean)session.getAttribute("isAdmin")==true){ %>
 Hello Admin
 <br>
-<%} %>
-<%if((Boolean)session.getAttribute("isMod")==true){ %>
+<%} }%>
+<%if((Boolean)session.getAttribute("isMod")!=null){ 
+	if((Boolean)session.getAttribute("isMod")==true){%>
 Hello Moderator
 <br>
-<%} %>
+<%} }%>
 <br>
-<%if((Boolean)session.getAttribute("isSales")==true){ %>
+<%if((Boolean)session.getAttribute("isSales")!=null){
+	if((Boolean)session.getAttribute("isSales")==true){%>
 Hello Salesman
 <br>
-<%} %>
+<%} }%>
 <a href='logout.jsp'>Log out</a>
 <%
     }
