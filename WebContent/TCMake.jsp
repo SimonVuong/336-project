@@ -28,7 +28,7 @@
 	   			//this is just a comment, add it like normal
 		   		Statement st = con.createStatement();
 		   		String user = session.getAttribute("userid").toString();
-		   		int tid = Integer.valueOf((String)request.getParameter("tid"));
+		   		int tid = Integer.valueOf((String)session.getAttribute("tid"));
 		   		st.executeUpdate("INSERT INTO Comment(user,contents,tid) values ('"+user+"','"+comment+"',"+tid+")");
 		   		response.sendRedirect("Comments.jsp?tid="+tid);
 		   			

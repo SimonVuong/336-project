@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name = "thread_create" action = "TCMake.jsp?tid=<%out.print(request.getParameter("tid"));%>" method="get">
+<form name = "thread_create" action = "TCMake.jsp" method="get">
 <textarea name = "comment" placeholder ="Enter Comment" rows="10" cols="30" maxlength = "5000">
 </textarea>
 <br>
@@ -26,6 +26,10 @@
 		String site = "login.jsp";   //sends them to the login page if the user isnt logged in
 		response.sendRedirect(site);
 	}
+  else
+  {
+	  session.setAttribute("tid",request.getParameter("tid"));
+  }
 %>
 </body>
 </html>
