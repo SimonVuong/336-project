@@ -14,13 +14,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<table class = "table table-striped">
-<thead>
- <tr>
- <th> User </th>
-  <th> Comment</th>
-  </tr>
-</thead>	
+<div class="panel panel-primary">
 <% 
 	try
 	{
@@ -37,24 +31,24 @@
 		
 		while(rs.next())
 		{
-			out.println("<tr>");
-			out.println("<td>");
-			out.println(rs.getString("user"));
-			out.println("</td>");
-			out.println("<td>");
+			out.print("<div class=\"panel-heading\">"+rs.getString("user")+":\t"+rs.getTimestamp("created")+"</div>");
+			out.println("<div class = \"well\"");
+			out.println("<p>");
 			out.println(rs.getString("contents")); //get the title and print it out as a link
-			out.println("</td>");
-			out.println("</tr>");
+			out.println("</p>");
+			out.println("</div>");
+			//out.println("</div>");
+			//out.println("<br>");
 		}
-		out.println("</table>");
+		out.println("</div>");
 		out.println("<a href = \"AddComment.jsp?tid="+tid+"\"> Add Comment");
+		
 	}
 	catch(Exception e)
 	{
 		out.print(e.getMessage());
 	}
 %>
-</table>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src=”js/bootstrap.js”></script>
 </body>
