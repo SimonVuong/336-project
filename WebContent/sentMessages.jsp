@@ -146,9 +146,19 @@
 			    Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
 		    	String current_user = (String) session.getAttribute("userid");
 		    	
-			    Statement st = con.createStatement();
-			    ResultSet rs;
-			    rs = st.executeQuery("SELECT * FROM Message WHERE sender = '"+session.getAttribute("userid")+"' and isAdmin = 1" );
+			    PreparedStatement st =null;
+			    ResultSet rs=null;
+			    String user= (String)session.getAttribute("userid");
+			    String quer="Select * FROM Message Where sender = ?";
+			    
+			    try{
+			    st=con.prepareStatement(quer);
+			    st.setString(1,user);
+			    rs = st.executeQuery();
+			    }
+			    catch(SQLException c){
+			    	out.println("your sql is messed up");
+			    }
 				String message=null;
 				%>
 				<center>
@@ -169,7 +179,7 @@
 		   			</tr>
 		   			<%} %>
 		   			<tr>
-		   				<td> <a href= "messages.jsp">recieved</a>
+		   				<td> <a href= "messages.jsp">Recieved</a>
 		   		</tbody>
 		   		
 		   	</table>
