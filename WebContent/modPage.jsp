@@ -47,7 +47,7 @@
 	</table>
 </div>
 <br>
-        <form method="post" action="verify.jsp">
+        <form method="post" action="moveThread.jsp">
             <center>
             <table>
                 <thead>
@@ -77,7 +77,7 @@
             </table>
             </center>
         </form>
-      <form method="post" action="verify.jsp">
+      <form method="post" action="deleteComment.jsp">
       	<center>
             <table>
                 <thead>

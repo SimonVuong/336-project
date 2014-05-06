@@ -21,7 +21,7 @@
     if (threadResult.next()) {
     	 if (topicResult.next()) {
     		 if (subTopicResult.next()) {
-    			 String query="Update Thread Set sname = subTopic Where tid=tID"
+    			 String query="Update Thread Set sname = "+ subTopic "Where tid=" + tID
     			 PreparedStatement upd=null;
     			 try{
     				 upd=con.prepareStatement(query);
