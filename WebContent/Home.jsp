@@ -148,9 +148,16 @@ body,table,td,th {
 	<td>
 	<a href = "Sales.jsp"> Sales Tools</a>
 	</td>
+	<td>
+	<a href = "messages.jsp"> View Messages</a>
+	</td>
+	<td>
+	<a href = "sendMessage.jsp"> Send Messages</a>
+	</td>
 	</tr>
 	</table>
 	</div>
+	<br>
 </body>
 
 </html>
