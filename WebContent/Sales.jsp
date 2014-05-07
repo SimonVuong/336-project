@@ -171,6 +171,7 @@
 		   				Amount: <input type="text" name="Amount" value="" />
 		   				Ad: <input type="text" name="Ad" value="" />
 		   				Salesman: <input type="text" name="Salesman" value="" />
+		   				<input type="submit" value = "Add product">
 		   			</form>
 
 		   			<%
