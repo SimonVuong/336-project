@@ -30,7 +30,7 @@ Thread Title: <input type = "text" name = "threadname">
    else
    {
 	   String sub_topic = request.getParameter("subtopic");
-	   session.setAttribute("subtopic", sub_topic);
+	   
    }
 %>
 </body>

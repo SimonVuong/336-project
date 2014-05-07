@@ -18,6 +18,7 @@
 	{
 		String sub_topic = request.getParameter("subtopic");
 		out.println(sub_topic);
+		session.setAttribute("subtopic", sub_topic);
 		//Create a connection string
 		String url = "jdbc:mysql://cs336-18.cs.rutgers.edu:3306/CS336_Project";
 		//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.

@@ -21,8 +21,9 @@
     	st.setInt(2,tID);
     	check=st.executeUpdate();
     }
-    catch(SQLException c){
+    catch(Exception e){
     	out.println("logic error");
+    	out.println(e.getMessage());
     }
     out.println(check);
     %>
