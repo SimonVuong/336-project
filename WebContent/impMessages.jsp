@@ -24,7 +24,7 @@
     	userCheck.setString(1,sentTo);
     	rs=userCheck.executeQuery();
     	if(rs.next()){
-    	st=con.prepareStatement(query);
+    	st=con.prepareStatement();
     	st.setString(1,userid);
     	st.setString(2,sentTo);
     	st.setString(3,message);
@@ -35,5 +35,5 @@
     	out.println("logic error");
     }
     out.println(check);
-    response.setHeader("Refresh", "5; URL=Home.jsp")
+    response.setHeader("Refresh", "5; URL=Home.jsp");
     %>

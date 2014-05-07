@@ -89,8 +89,8 @@ body,table,td,th {
 	Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
 	PreparedStatement st=null;
 	PreparedStatement st2=null;
-	String query="Update Users Set isMod= ? where uname= ?";
-	String query2=("Select * From Users where uname = ?");
+	String query="Update Users Set isMod= ? Where uname= ?";
+	String query2=("Select * From Users Where uname = ?");
 	ResultSet rs=null;
 	try{
 		st2=con.prepareStatement(query2);
