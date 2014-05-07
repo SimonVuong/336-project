@@ -126,6 +126,14 @@ try {
 	    		out.println("<a href='logout.jsp'>Log out</a>");
 	    		out.println("</td>");
 	    		out.println("</tr>");
+	    		%>
+	    		<form>
+    				<input type="checkbox" name="carsIntereset" value="cars" disabled>Cars<br>
+					<input type="checkbox" name="socksInterest" value="socks" disabled>Socks<br>
+					<input type="checkbox" name="horsesInterest" value="horses" disabled>Horses<br>
+					
+				</form>
+	    		<%
 	    		out.println("</table>");
 	    		
 	    		out.println("</div>");

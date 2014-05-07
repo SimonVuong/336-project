@@ -1,3 +1,11 @@
+<%@ page language="java" import="java.util.*"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="javax.sql.*" %>
+<%@ page import="javax.naming.*" %>
+<%@ page import ="java.sql.*" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
 if(session.getAttribute("userid")!=null)
@@ -91,9 +99,16 @@ body,table,td,th {
                         <p>User Name: <input type="text" name="uname" value="" /></p>
 
                         <p>Password: <input type="password" name="pass" value="" /></p>
-                        
+                        Interests:
+						<input type="checkbox" name="carsIntereset" value="cars">Cars<br>
+						<input type="checkbox" name="socksInterest" value="socks">Socks<br>
+						<input type="checkbox" name="horsesInterest" value="horses">Horses<br>
+						
                         <p><input type="submit" value="Submit" /></p>
                         <p><input type="reset" value="Reset" /></p>
+                        
+
+					 
                     
                         <p>Go back to Login: <a href="login.jsp">Login Here</a></p>
             </center>

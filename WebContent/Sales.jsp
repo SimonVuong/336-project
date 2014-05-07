@@ -12,7 +12,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Sales Home Page</title>
 		<style type="text/css">
 			a:link
 			{
@@ -139,25 +139,24 @@
 		    	
 			    Statement st = con.createStatement();
 			    ResultSet rs;
-			    rs = st.executeQuery("SELECT * FROM Users U WHERE uname = '"+session.getAttribute("userid")+"' and isAdmin = 1" );
+			    rs = st.executeQuery("SELECT * FROM Users U WHERE uname = '"+session.getAttribute("userid")+"' and isSales = 1" );
 			
 		   		if(rs.next()){
 		   			%>
-		   			<form method = "post" action = "giveModPowers.jsp">
-		   				Username: <input type="text" name = "giveModPowers" value = ""> <input type="submit" value = "Give Mod Powers">
+		   			<form method="post" action="UploadServlet" enctype="multipart/form-data">
+					    Upload image<input type="file" name="file" accept="image/*" />Add interest:<input type="checkbox" name="carsIntereset" value="cars">Cars<input type="checkbox" name="socksInterest" value="socks">Socks <input type="checkbox" name="horsesInterest" value="horses">Horses<input type="submit" value = "Add ad">
+													   			</form>
+		   			<form method = "post" action = "deleteAd.jsp">
+		   				<select name ="interests">
+		   					<option value="cars">Cars</option>
+							<option value="socks">Socks</option>
+							<option value="horses">Horses</option>
+		   				</select><input type="submit" value = "Delete ad">
 		   			</form>
-		   			<form method = "post" action = "giveSalesPowers.jsp">
-		   				Username: <input type="text" name = "giveSalesPowers" value = ""> <input type="submit" value = "Give Sales Powers">
-		   			</form>
-		   			<form method = "post" action = "makeTopic.jsp">
-		   				Topic: <input type="text" name= "makeTopic" value = ""> <input type="submit" value = "Make topic">
-		   			</form>
-		   			<form method = "post" action = "makeSubtopic.jsp">
-		   				Subtopic: <input type="text" name = "makeSubtopic"> of Topic: <input type= "text" name ="ofTopic" > <input type="submit" value = "Make subtopic">
-		   			</form>
+
 		   			<%
 		   		}else{
-		   			out.println("You are not an admin <a href='Home.jsp'>Return to home</a>");
+		   			out.println("You are not an salesman <a href='Home.jsp'>Return to home</a>");
 		   		}
 		    	
 			 %>
