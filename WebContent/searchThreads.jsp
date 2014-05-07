@@ -137,8 +137,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr> <td>Search for Thread containing all keywords: </td>
-                        <td><input type="text" name="keys" value="" /></td>
+                    <tr> <td>Search for Threads containing keyword: </td>
+                        <td><input type="text" name="key" value="" /></td>
                     </tr>
                     
                     <tr>
