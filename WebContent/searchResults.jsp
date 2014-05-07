@@ -149,6 +149,8 @@
 			    PreparedStatement st =null;
 			    ResultSet rs=null;
 			    String key= request.getParameter("key");
+			    key='%'+key;
+			    key=key+'%';
 			    String quer="Select * FROM Thread Where title Like ?";
 			    
 			    try{
@@ -164,17 +166,13 @@
 				<center>
                 <% 
 		   		while(rs.next()){
-		   			out.print("<div class=\"panel-heading\">"+rs.getString("sender")+":\t"+rs.getTimestamp("sentTime")+"</div>");
-					out.println("<div class = \"well\"");
-					out.println("<p>");
-					out.println(rs.getString("contents")); //get the title and print it out as a link
-					out.println("</p>");
-					out.println("</div>");
+		   			int tid=rs.getInt("tid");
+		   			String tTitle=rs.getString("title");
+		   			out.println("<li class=\"list-group-item list-group-item-info\"><a href = \"Comments.jsp?tid="+tid+"\">"+tTitle+"</a></li>");
 					//out.println("</div>");
 					//out.println("<br>");
 				}
 				out.println("</div>"); %>
-				<a href= "sentMessages.jsp">Sent</a>
 				
 		   			</center>
 			 
