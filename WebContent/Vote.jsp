@@ -33,21 +33,19 @@
 		ResultSet rs = st.executeQuery("select * from Comment WHERE cid="+cid); 
 		rs.next();
 		String targetname = rs.getString("user");
-		/*
 		if(targetname.equals(user))
 		{
 			out.println("<h1>You can not vote for yourself!</h1>");
 			response.setHeader("Refresh","3; URL = Comments.jsp?tid="+tid);
 		}
-		*/
+		else
+		{
 		int result = st.executeUpdate("Insert Into CommentVotes(votername,targetname,cid) values ('"+user+"','"+targetname+"',"+cid+")");
-		
-			
-		
 		st.executeUpdate("UPDATE Comment SET votes=votes+1 where cid ='"+cid+"'"); //update votes
+		st.executeUpdate("UPDATE Users SET netVotes=netVotes+1 where uname ='"+targetname+"'");
 		out.println("<h1>Vote Successful!</h1>");
 		response.setHeader("Refresh","2; URL = Comments.jsp?tid="+tid);
-		
+		}
 	}
 	catch(Exception e)
 	{
