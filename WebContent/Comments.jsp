@@ -13,12 +13,22 @@
 <title>Insert title here</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
+<style type="text/css">
+a:link {
+color: inherit;
+}
+a:visited{
+color: inherit;
+}
+</style>
 <body>
 <div class="panel panel-primary">
 <% 
 	try
 	{
+		session.setAttribute("tid",request.getParameter("tid")); //set the session to the tid
 		int tid = Integer.valueOf((String)request.getParameter("tid"));
+		
 		String url = "jdbc:mysql://cs336-18.cs.rutgers.edu:3306/CS336_Project";
 		//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
 		Class.forName("com.mysql.jdbc.Driver");
@@ -26,22 +36,26 @@
 		//Create a connection to your DB
 		Connection con = DriverManager.getConnection(url, "csuser", "csda0467");
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select * from Comment where tid="+tid); //should get all the threads of a subtopic
+		ResultSet rs = st.executeQuery("select * from Comment where tid="+tid); 
 		
 		
 		while(rs.next())
 		{
-			out.print("<div class=\"panel-heading\">"+rs.getString("user")+":\t"+rs.getTimestamp("created")+"</div>");
+			out.print("<div class=\"panel-heading\">");
+			out.println("<h4>User: "+rs.getString("user")+"<span class =\"pull-right\"><a href = \"Vote.jsp?cid="+rs.getInt("cid")+"\">Vote</a></span></h4>");
+			out.println("Created: "+rs.getTimestamp("created"));
+			out.println(" Comment Id:"+rs.getInt("cid"));
+			out.println("Votes:"+rs.getInt("Votes"));
+			out.println("</div>");
 			out.println("<div class = \"well\"");
 			out.println("<p>");
-			out.println(rs.getString("contents")); //get the title and print it out as a link
+			out.println(rs.getString("contents")); 
 			out.println("</p>");
 			out.println("</div>");
-			//out.println("</div>");
-			//out.println("<br>");
+			out.println("<br>");
 		}
 		out.println("</div>");
-		out.println("<a href = \"AddComment.jsp?tid="+tid+"\"> Add Comment");
+		out.println("<a href = \"AddComment.jsp?tid="+tid+"\"> Add Comment</a>");
 		
 	}
 	catch(Exception e)

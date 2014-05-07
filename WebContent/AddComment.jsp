@@ -26,10 +26,6 @@
 		String site = "login.jsp";   //sends them to the login page if the user isnt logged in
 		response.sendRedirect(site);
 	}
-  else
-  {
-	  session.setAttribute("tid",request.getParameter("tid"));
-  }
 %>
 </body>
 </html>
