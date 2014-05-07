@@ -87,14 +87,28 @@ body,table,td,th {
 	//Create a connection to your DB
 	Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
 
-	String aid = (String) request.getParameter("ad names");
+	String name = request.getParameter("Name");
+	int price = Integer.parseInt(request.getParameter("Price"));
+	int amount = Integer.parseInt(request.getParameter("Amount"));
+	int aid =Integer.parseInt(request.getParameter("Aid"));
+	String salesman = request.getParameter("Salesman");
 	
-    Statement st = con.createStatement();
-    ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM Advertisement A WHERE aid = '"+aid+"'" );
-    if(rs.next()){
-    	rs.deleteRow();
-    }
+	PreparedStatement stmt = con.prepareStatement("INSERT INTO Product(name, price, amount, aid, salesman) values (?,?,?,?,?) ");
+
+	stmt.setString(1, name);
+	stmt.setInt(2, price);
+	stmt.setInt(3, amount);
+	stmt.setInt(4, aid );
+	stmt.setString(5, salesman );
+	
+	
+	int row = stmt.executeUpdate();
+	if(row>0){
+		out.println("product added");
+	}else{
+		out.println("product not added");
+	}
+	
 
 
 
