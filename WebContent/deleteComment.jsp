@@ -12,13 +12,14 @@
     	out.println("connection failed");}
     PreparedStatement st=null;
     String query="Delete From Comment Where cid= ?";
+    int check=100;
     try{
     	st=con.prepareStatement(query);
     	st.setInt(1,cID);
-    	st.executeUpdate();
+    	check=st.executeUpdate();
     }
     catch(SQLException c){
     	out.println("logic error");
     }
-    out.println("success!");
+    out.println("check");
     %>
