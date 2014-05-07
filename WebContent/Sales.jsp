@@ -145,12 +145,23 @@
 		   			%>
 		   			<form method="post" action="addAdVerify.jsp">
 					    Link name: <input type="text" name="link" value="" />Add interest:<input type="checkbox" name="carsIntereset" value="cars">Cars<input type="checkbox" name="socksInterest" value="socks">Socks <input type="checkbox" name="horsesInterest" value="horses">Horses<input type="submit" value = "Add ad">
-													   			</form>
+					</form>
+					
+					
+					
+					
+					
 		   			<form method = "post" action = "deleteAd.jsp">
-		   				<select name ="add names">
-		   					<option value="cars">Cars</option>
-							<option value="socks">Socks</option>
-							<option value="horses">Horses</option>
+		   				<select name ="ad names">
+		   					<%
+		   					rs = st.executeQuery("SELECT A.aid FROM Advertisement A" );
+		   					while(rs.next()){
+		   						String aid =String.valueOf(rs.getInt(1));
+		   						out.println("<option value=\" "+aid+" \">" +aid);
+		   					}
+		   					
+		   					
+		   					%>
 		   				</select><input type="submit" value = "Delete ad">
 		   			</form>
 		   			
