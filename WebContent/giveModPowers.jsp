@@ -87,16 +87,31 @@ body,table,td,th {
 	Class.forName("com.mysql.jdbc.Driver");
 	//Create a connection to your DB
 	Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
+	PreparedStatement st=null;
+	PreparedStatement st2=null;
+	String query="Update Users Set isMod= ? where uname= ?";
+	String query2=("Select * From Users where uname = ?");
+	ResultSet rs=null;
+	try{
+		st2=con.prepareStatement(query2);
+		st2.setString(1,userid);
+		rs=st2.executeQuery(query2);
+		if(rs.next()){
+			if(rs.getBoolean("isMod")==true){
+				out.println("this guy is already a mod");
+			}
+			else{
+			st=con.prepareStatement(query);
+			st.setBoolean(1,true);
+			st.setString(2,userid);
+			st.executeUpdate();
+			}
+		}
+	}
+	catch(SQLException c){
+		out.println("SQL messed up");
+	}
 	
-	Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-	ResultSet rs;
-	rs = st.executeQuery("select * from Users where uname=  '"    + userid +    "' ");
-	 if (rs.next()) {
-        rs.updateBoolean(7, true);
-        out.println(userid +"has been given mod powers.");
-    } else {
-    	out.println(userid +"does not exist!");
-    }
 
 
 
