@@ -1,6 +1,6 @@
 <%@ page import ="java.sql.*" %>
 <%
-    int tID = Integer.ParseInt(request.getParameter("tID"));    
+    int tID = Integer.parseInt(request.getParameter("tID"));    
     String topic = request.getParameter("topic");
     String subTopic= request.getParameter("subTopic");
     Class.forName("com.mysql.jdbc.Driver");
@@ -12,9 +12,9 @@
     ResultSet threadResult=null;
     ResultSet topicResult=null;
     ResultSet subTopicResult=null;
-    String topicSel= "Select * FROM Topic Where tname=?"
-    String threadSel= "Select * FROM Thread Where tid=?"
-    String subTopSel= "Select * FROM Subtopic Where sname=? and tname=?"
+    String topicSel= "Select * FROM Topic Where tname=?";
+    String threadSel= "Select * FROM Thread Where tid=?";
+    String subTopSel= "Select * FROM Subtopic Where sname=? and tname=?";
     try{
     threadState= con.prepareStatement(threadSel);
     threadState.setInt(1,tID);
@@ -27,7 +27,7 @@
     subTopicState=con.prepareStatement(subTopSel);
     subTopicState.setString(1,subTopic);
     subTopicState.setString(2,topic);
-    subTopicResult=subTopicState.executeQuery;
+    subTopicResult=subTopicState.executeQuery();
     
     }
     catch(SQLException e){
@@ -42,17 +42,15 @@
     				 upd=con.prepareStatement(query);
     				 upd.setString(1,subTopic);
     				 upd.setInt(2,tID);
-    				 upd.executeQuery;
+    				 upd.executeUpdate();
     			 }
     			 catch(SQLException e){
-    				 out.println("we already found your topic and stuff... this should work")
+    				 out.println("we already found your topic and stuff... this should work");
     			 }
     		 }
     	 }
         
     } 
     response.sendRedirect("success.jsp");
-    else {
-        out.println("Invalid thread ID or topic subtopic combination. <a href='home.jsp'>try again</a>");
-    }
+   
 %>

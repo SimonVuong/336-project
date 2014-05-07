@@ -1,7 +1,9 @@
 <%@ page import ="java.sql.*" %>
 <%
-    String temp = request.getParameter("cID"); 
-	int cID= Integer.parseInt(temp);
+	String userid=(String) session.getAttribute("userid");
+    String sentTo = request.getParameter("sentTo"); 
+	String message request.getParameter("message");
+	
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = null;
     try{
@@ -11,11 +13,13 @@
     catch(Exception e){
     	out.println("connection failed");}
     PreparedStatement st=null;
-    String query="Delete From Comment Where cid= ?";
+    String query="Update Thread Set title= ? Where tid= ?";
     int check=100;
+    //I am running this and getting 0 lines updated??
     try{
     	st=con.prepareStatement(query);
-    	st.setInt(1,cID);
+    	st.setString(1,newTitle);
+    	st.setInt(2,tID);
     	check=st.executeUpdate();
     }
     catch(SQLException c){
