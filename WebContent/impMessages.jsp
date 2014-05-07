@@ -2,7 +2,7 @@
 <%
 	String userid=(String) session.getAttribute("userid");
     String sentTo = request.getParameter("sentTo"); 
-	String message request.getParameter("message");
+	String message =request.getParameter("message");
 	
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = null;
@@ -13,14 +13,23 @@
     catch(Exception e){
     	out.println("connection failed");}
     PreparedStatement st=null;
-    String query="Update Thread Set title= ? Where tid= ?";
+    PreparedStatement userCheck=null;
+    String query="Insert Into Message (sender, receiver, contents) VALUES (?,?,?)";
+    String sentToQuery="Select * From Users Where uname=?";
+    ResultSet rs=null;
     int check=100;
     //I am running this and getting 0 lines updated??
     try{
+    	userCheck=con.prepareStatement(sentToQuery);
+    	userCheck.setString(1,sentTo);
+    	rs=userCheck.executeQuery();
+    	if(rs.next()){
     	st=con.prepareStatement(query);
-    	st.setString(1,newTitle);
-    	st.setInt(2,tID);
+    	st.setString(1,userid);
+    	st.setString(2,sentTo);
+    	st.setString(3,message);
     	check=st.executeUpdate();
+    	}
     }
     catch(SQLException c){
     	out.println("logic error");
