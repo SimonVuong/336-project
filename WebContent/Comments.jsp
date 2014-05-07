@@ -21,6 +21,7 @@ a:visited{
 color: inherit;
 }
 </style>
+
 <body>
 <div class="panel panel-primary">
 <% 
@@ -37,12 +38,12 @@ color: inherit;
 		Connection con = DriverManager.getConnection(url, "csuser", "csda0467");
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery("select * from Comment where tid="+tid); 
-		
-		
-		while(rs.next())
+		int seedid=0;
+		if(rs.next())
 		{
+			seedid= rs.getInt("cid");
 			out.print("<div class=\"panel-heading\">");
-			out.println("<h4>User: "+rs.getString("user")+"<span class =\"pull-right\"><a href = \"Vote.jsp?cid="+rs.getInt("cid")+"\">Vote</a></span></h4>");
+			out.println("<h4>Started By: "+rs.getString("user")+"</h4>");
 			out.println("Created: "+rs.getTimestamp("created"));
 			out.println(" Comment Id:"+rs.getInt("cid"));
 			out.println("Votes:"+rs.getInt("Votes"));
@@ -53,6 +54,25 @@ color: inherit;
 			out.println("</p>");
 			out.println("</div>");
 			out.println("<br>");
+		}
+		rs = st.executeQuery("select * from Comment where tid="+tid+" Order By votes desc;"); 
+		while(rs.next())
+		{
+			if(seedid!=rs.getInt("cid"))
+			{
+				out.print("<div class=\"panel-heading\">");
+				out.println("<h4>User: "+rs.getString("user")+"<span class =\"pull-right\"><a href = \"Vote.jsp?cid="+rs.getInt("cid")+"\">Vote</a></span></h4>");
+				out.println("Created: "+rs.getTimestamp("created"));
+				out.println(" Comment Id:"+rs.getInt("cid"));
+				out.println("Votes:"+rs.getInt("Votes"));
+				out.println("</div>");
+				out.println("<div class = \"well\"");
+				out.println("<p>");
+				out.println(rs.getString("contents")); 
+				out.println("</p>");
+				out.println("</div>");
+				out.println("<br>");
+			}
 		}
 		out.println("</div>");
 		out.println("<a href = \"AddComment.jsp?tid="+tid+"\"> Add Comment</a>");

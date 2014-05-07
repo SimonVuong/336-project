@@ -14,11 +14,11 @@ if(session.getAttribute("userid")!=null)
     </head>
        <style type="text/css">
 
-a:link 
+#nav a:link 
 {
 color:#0299d2;
 }
-a:visited
+#nav a:visited
 {
  color: #0299d2;
 }
