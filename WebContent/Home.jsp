@@ -8,7 +8,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>Index</title>
-
+<title>Hodor</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
    <style type="text/css">
 
 a:link 
@@ -147,9 +148,16 @@ body,table,td,th {
 	<td>
 	<a href = "Sales.jsp"> Sales Tools</a>
 	</td>
+	<td>
+	<a href = "messages.jsp"> View Messages</a>
+	</td>
+	<td>
+	<a href = "sendMessage.jsp"> Send Messages</a>
+	</td>
 	</tr>
 	</table>
 	</div>
+	<br>
 </body>
 
 </html>

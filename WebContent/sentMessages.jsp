@@ -22,6 +22,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Insert title here</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<style type="text/css">
 			a:link
 			{
@@ -174,11 +175,13 @@
 					//out.println("<br>");
 				}
 				out.println("</div>"); %>
-				<a href= "sentMessages.jsp">Sent</a>
+				
 				
 		   			</center>
 			 
-		   				 <a href= "messages.jsp">Recieved</a>
+		   				 <a href= "messages.jsp">Received</a>
+		   				 <br>
+		   				 <a href= "searchSentMessages.jsp">Search Sent Messages Using a keyword </a>
 		   		
 		    	
 			 

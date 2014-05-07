@@ -12,7 +12,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
+<title>Hodor</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<style type="text/css">
 			a:link
 			{
@@ -161,6 +162,9 @@
 		   		}
 		    	
 			 %>
+			 <br>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src=”js/bootstrap.js”></script>
 		</body>
 		
 </html>

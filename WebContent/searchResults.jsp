@@ -9,6 +9,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%//this DOC is for implementing search on threads %>
 <%
 	//if the user is not logged in as a mod, they will be sent to the login page;
 	if((String) session.getAttribute("userid")==null)
@@ -149,12 +150,14 @@
 		    	
 			    PreparedStatement st =null;
 			    ResultSet rs=null;
-			    String user= (String)session.getAttribute("userid");
-			    String quer="Select * FROM Message Where receiver = ?";
+			    String key= request.getParameter("key");
+			    key='%'+key;
+			    key=key+'%';
+			    String quer="Select * FROM Thread Where title Like ?";
 			    
 			    try{
 			    st=con.prepareStatement(quer);
-			    st.setString(1,user);
+			    st.setString(1,key);
 			    rs = st.executeQuery();
 			    }
 			    catch(SQLException c){
@@ -165,19 +168,13 @@
 				<center>
                 <% 
 		   		while(rs.next()){
-		   			out.print("<div class=\"panel-heading\">"+rs.getString("sender")+":\t"+rs.getTimestamp("sentTime")+"</div>");
-					out.println("<div class = \"well\"");
-					out.println("<p>");
-					out.println(rs.getString("contents")); //get the title and print it out as a link
-					out.println("</p>");
-					out.println("</div>");
+		   			int tid=rs.getInt("tid");
+		   			String tTitle=rs.getString("title");
+		   			out.println("<li class=\"list-group-item list-group-item-info\"><a href = \"Comments.jsp?tid="+tid+"\">"+tTitle+"</a></li>");
 					//out.println("</div>");
 					//out.println("<br>");
 				}
 				out.println("</div>"); %>
-				<a href= "sentMessages.jsp">Sent</a>
-				<br>
-				<a href= "searchRecieved.jsp">Search received messages </a>
 				
 		   			</center>
 			 

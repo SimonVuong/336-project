@@ -151,6 +151,7 @@
 			    ResultSet rs=null;
 			    String user= (String)session.getAttribute("userid");
 			    String quer="Select * FROM Message Where receiver = ?";
+			    String key=request.getParameter("key");
 			    
 			    try{
 			    st=con.prepareStatement(quer);
@@ -165,6 +166,8 @@
 				<center>
                 <% 
 		   		while(rs.next()){
+		   			String cont=rs.getString("contents");
+		   			if(cont.toLowerCase().contains(key.toLowerCase())){
 		   			out.print("<div class=\"panel-heading\">"+rs.getString("sender")+":\t"+rs.getTimestamp("sentTime")+"</div>");
 					out.println("<div class = \"well\"");
 					out.println("<p>");
@@ -173,6 +176,7 @@
 					out.println("</div>");
 					//out.println("</div>");
 					//out.println("<br>");
+		   			}
 				}
 				out.println("</div>"); %>
 				<a href= "sentMessages.jsp">Sent</a>

@@ -20,13 +20,14 @@ if(session.getAttribute("userid")!=null)
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hordor</title>
     </head>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
        <style type="text/css">
 
-a:link 
+#nav a:link 
 {
 color:#0299d2;
 }
-a:visited
+#nav a:visited
 {
  color: #0299d2;
 }
@@ -99,17 +100,17 @@ body,table,td,th {
                         <p>User Name: <input type="text" name="uname" value="" /></p>
 
                         <p>Password: <input type="password" name="pass" value="" /></p>
-                        Interests:
-						<input type="checkbox" name="carsIntereset" value="cars">Cars<br>
-						<input type="checkbox" name="socksInterest" value="socks">Socks<br>
-						<input type="checkbox" name="horsesInterest" value="horses">Horses<br>
-						
+	                    <select name="interests">
+					    <option value="" disabled="disabled" selected="selected">Please select an interest</option>
+					    <option value="1">Horses</option>
+					    <option value="2">Swords</option>
+					    <option value="3">The Coming Winter</option>
+					    <option value="4">cars</option>
+					    <option value="5">socks</option>
+						</select>
                         <p><input type="submit" value="Submit" /></p>
                         <p><input type="reset" value="Reset" /></p>
-                        
-
-					 
-                    
+                    	
                         <p>Go back to Login: <a href="login.jsp">Login Here</a></p>
             </center>
         </form>

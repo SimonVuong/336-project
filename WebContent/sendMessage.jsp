@@ -17,7 +17,6 @@
 	    	response.sendRedirect(site);
 	   	}
 %>
-
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -137,51 +136,30 @@
 					</tr>
 				</table>
 			</div>
-			<%
-				//Create a connection string
-				String url = "jdbc:mysql://cs336-18.cs.rutgers.edu:3306/CS336_Project";
-		    	//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
-			    Class.forName("com.mysql.jdbc.Driver");
-		    	
-		    	//Create a connection to your DB
-			    Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
-		    	String current_user = (String) session.getAttribute("userid");
-		    	
-			    PreparedStatement st =null;
-			    ResultSet rs=null;
-			    String user= (String)session.getAttribute("userid");
-			    String quer="Select * FROM Message Where receiver = ?";
-			    
-			    try{
-			    st=con.prepareStatement(quer);
-			    st.setString(1,user);
-			    rs = st.executeQuery();
-			    }
-			    catch(SQLException c){
-			    	out.println("your sql is messed up");
-			    }
-				String message=null;
-				%>
-				<center>
-                <% 
-		   		while(rs.next()){
-		   			out.print("<div class=\"panel-heading\">"+rs.getString("sender")+":\t"+rs.getTimestamp("sentTime")+"</div>");
-					out.println("<div class = \"well\"");
-					out.println("<p>");
-					out.println(rs.getString("contents")); //get the title and print it out as a link
-					out.println("</p>");
-					out.println("</div>");
-					//out.println("</div>");
-					//out.println("<br>");
-				}
-				out.println("</div>"); %>
-				<a href= "sentMessages.jsp">Sent</a>
-				<br>
-				<a href= "searchRecieved.jsp">Search received messages </a>
-				
-		   			</center>
-			 
-		</body>
-	
-		
-</html>
+			<br>
+			<form method="post" action="impMessages.jsp">
+      	<center>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Send a message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr> <td>Send to user: </td>
+                        <td><input type="text" name="sentTo" value="" /></td>
+                    </tr>
+                    <tr> 
+                        <td colspan="2"><textarea name = "message" placeholder ="Enter Message" rows="10" cols="30" maxlength = "5000">
+</textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Submit" /></td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+            </center>
+      </form> 
+      </body>
+     </html>

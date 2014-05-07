@@ -150,7 +150,8 @@
 			    PreparedStatement st =null;
 			    ResultSet rs=null;
 			    String user= (String)session.getAttribute("userid");
-			    String quer="Select * FROM Message Where receiver = ?";
+			    String quer="Select * FROM Message Where sender = ?";
+			    String key=request.getParameter("key");
 			    
 			    try{
 			    st=con.prepareStatement(quer);
@@ -165,7 +166,9 @@
 				<center>
                 <% 
 		   		while(rs.next()){
-		   			out.print("<div class=\"panel-heading\">"+rs.getString("sender")+":\t"+rs.getTimestamp("sentTime")+"</div>");
+		   			String cont=rs.getString("contents");
+		   			if(cont.toLowerCase().contains(key.toLowerCase())){
+		   			out.print("<div class=\"panel-heading\">"+rs.getString("receiver")+":\t"+rs.getTimestamp("sentTime")+"</div>");
 					out.println("<div class = \"well\"");
 					out.println("<p>");
 					out.println(rs.getString("contents")); //get the title and print it out as a link
@@ -173,13 +176,18 @@
 					out.println("</div>");
 					//out.println("</div>");
 					//out.println("<br>");
+		   			}
 				}
 				out.println("</div>"); %>
 				<a href= "sentMessages.jsp">Sent</a>
-				<br>
-				<a href= "searchRecieved.jsp">Search received messages </a>
 				
 		   			</center>
+			 
+		   				 <a href= "messages.jsp">Received</a>
+		   				 <br>
+		   				 <a href= "searchSentMessages">Search Sent Messages Using a keyword </a>
+		   		
+		    	
 			 
 		</body>
 	

@@ -9,8 +9,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>Index</title>
-
-   <style type="text/css">
+<title>Hodor</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<style type="text/css">
 
 a:link 
 {
@@ -57,7 +59,6 @@ body,table,td,th {
 }
 
 </style>
-</head>
 <div id = "nav">
 <body>
 	<table>
@@ -79,9 +80,8 @@ body,table,td,th {
 			</td>
 		</tr>
 	</table>
-
 </div>
-
+<br>
 <%
 	try {
 	
@@ -96,33 +96,30 @@ body,table,td,th {
     		ResultSet rs = st.executeQuery("select * from Topic");
     		Statement sub_state = con.createStatement();
     		ResultSet sub_rs;
-    		out.println("<div id = \"Topics\">");   //makes a div for css stuff whatever
-    		out.println("<table>");
     		while(rs.next())
     		{
-    			out.println("<tr>");
-    			out.println("<td>");
-    			out.println(rs.getString("tname"));    
-    			out.println("</td>");
+    			out.print("<div class=\"panel panel-primary\">");
+    			out.print("<div class=\"panel-heading\">");
+    			out.println("<h3>"+rs.getString("tname")+"</h3>");
+    			out.println("</div>");
     			sub_rs = sub_state.executeQuery("select * from Subtopic where tname ='"+rs.getString("tname")+"'");   //finish this
-    			out.println("</tr>");
+    			out.print("<ul class=\"list-group\">");
     			while(sub_rs.next())  //TODO need to make it generate subtopics
     			{
-    				out.println("<tr>");
-        			out.println("<td>");
-        			out.println("<a href = \"Threads.jsp?subtopic="+sub_rs.getString("sname")+"\">"+sub_rs.getString("sname")+"</a>");
-        			out.println("</td>");
+        			out.println("<li class=\"list-group-item list-group-item-info\"><a href = \"Threads.jsp?subtopic="+sub_rs.getString("sname")+"\">"+sub_rs.getString("sname")+"</a>");
+        			out.println("</li>");
     			}
-    			
-    			
+    			out.print("</ul>");
+    			out.println("</div>");
+    			out.println("<br>");
     		}
-    		out.println("</table>");
-    		out.println("</div>");
 	}
 	catch(Exception e)
 	{
 		out.println(e);
 	}
 %>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src=”js/bootstrap.js”></script>
 </body>
 </html>
