@@ -143,15 +143,23 @@
 			
 		   		if(rs.next()){
 		   			%>
-		   			<form method="post" action="UploadServlet" enctype="multipart/form-data">
-					    Upload image<input type="file" name="file" accept="image/*" />Add interest:<input type="checkbox" name="carsIntereset" value="cars">Cars<input type="checkbox" name="socksInterest" value="socks">Socks <input type="checkbox" name="horsesInterest" value="horses">Horses<input type="submit" value = "Add ad">
+		   			<form method="post" action="addAdVerify.jsp">
+					    Link name: <input type="text" name="link" value="" />Add interest:<input type="checkbox" name="carsIntereset" value="cars">Cars<input type="checkbox" name="socksInterest" value="socks">Socks <input type="checkbox" name="horsesInterest" value="horses">Horses<input type="submit" value = "Add ad">
 													   			</form>
 		   			<form method = "post" action = "deleteAd.jsp">
-		   				<select name ="interests">
+		   				<select name ="add names">
 		   					<option value="cars">Cars</option>
 							<option value="socks">Socks</option>
 							<option value="horses">Horses</option>
 		   				</select><input type="submit" value = "Delete ad">
+		   			</form>
+		   			
+		   			<form method = "post" action = "addProduct.jsp">
+		   				Name: <input type="text" name="Name" value="" />
+		   				Price: <input type="text" name="Price" value="" />
+		   				Amount: <input type="text" name="Amount" value="" />
+		   				Ad: <input type="text" name="Ad" value="" />
+		   				Salesman: <input type="text" name="Salesman" value="" />
 		   			</form>
 
 		   			<%

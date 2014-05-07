@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ad addition verification</title>
+<title>Ad delete verification</title>
    <style type="text/css">
 
 a:link 
@@ -87,21 +87,10 @@ body,table,td,th {
 	//Create a connection to your DB
 	Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
 
-	String link = request.getParameter("link");
+	String link = request.getParameter("interests");
 	
 	String interest = "";
-	
-	if(request.getParameter("carsInterest") != null){
-		interest = request.getParameter("carsInterest");
-	}
-	
-	if(request.getParameter("socksInterest") != null){
-		interest = request.getParameter("socksInterest");
-	}
-	
-	if(request.getParameter("horsesInterest") != null){
-		interest = request.getParameter("horsesInterest");
-	}
+
 
 	PreparedStatement stmt = con.prepareStatement("INSERT INTO Advertisement(interest,link) values (?,?) ");
 
