@@ -88,12 +88,14 @@ body,table,td,th {
 	Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
 
 	String aid = (String) request.getParameter("ad names");
-	
-    Statement st = con.createStatement();
-    ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM Advertisement A WHERE aid = '"+aid+"'" );
-    if(rs.next()){
-    	rs.deleteRow();
+	String sql = "DELETE FROM Advertisement WHERE aid =" +aid;
+    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+    int i  = st.executeUpdate(sql );
+    if(i>0){
+    	%>
+    		Ad deleted
+    	<%
     }
 
 
