@@ -53,8 +53,7 @@
 	   		    else
 	   		    {
 	   		    	
-	   		    	out.println("Good work");
-	   		    	
+	   		    	response.sendRedirect("Threads.jsp?subtopic="+subtopic);
 	   		    }
 	   		    //is there a way to do any god damn error checking and tell it to the user
 	   		    //int j = st.executeUpdate("insert into Comments")
@@ -64,7 +63,7 @@
 	}
 	catch(Exception e)
 	{
-		out.print(e.getMessage());
+		response.sendRedirect("forum.jsp");
 	}
 
    

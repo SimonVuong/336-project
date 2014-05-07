@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login Page</title>
+<title>Hodor</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
    <style type="text/css">
 
@@ -60,8 +61,8 @@ body,table,td,th {
 
 </style>
 </head>
-<div id = "nav">
 <body>
+<div id = "nav">
 	<table>
 		<tr>
 			<td>
@@ -146,5 +147,7 @@ catch(Exception e)
 		
 	}
 	%>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src=”js/bootstrap.js”></script>
 	</body>
 </html>

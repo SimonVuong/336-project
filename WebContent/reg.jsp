@@ -12,6 +12,7 @@ if(session.getAttribute("userid")!=null)
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hordor</title>
     </head>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
        <style type="text/css">
 
 #nav a:link 

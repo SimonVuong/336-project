@@ -22,10 +22,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hordor</title>
     </head>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link rel = "stylesheet" type = "text/css" href = "Nav.css">
 </head>
-<div id = "nav">
 <body>
+<div id = "nav">
 	<table>
 		<tr>
 			<td>
