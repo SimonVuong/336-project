@@ -35,4 +35,5 @@
     	out.println("logic error");
     }
     out.println(check);
+    response.setHeader("Refresh", "5; URL=Home.jsp")
     %>

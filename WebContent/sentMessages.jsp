@@ -175,11 +175,13 @@
 					//out.println("<br>");
 				}
 				out.println("</div>"); %>
-				<a href= "sentMessages.jsp">Sent</a>
+				
 				
 		   			</center>
 			 
-		   				 <a href= "messages.jsp">Recieved</a>
+		   				 <a href= "messages.jsp">Received</a>
+		   				 <br>
+		   				 <a href= "searchSentMessages.jsp">Search Sent Messages Using a keyword </a>
 		   		
 		    	
 			 

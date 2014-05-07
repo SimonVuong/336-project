@@ -9,15 +9,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-	//if the user is not logged in as a mod, they will be sent to the login page;
-	if((String) session.getAttribute("userid")==null)
-		{
-			String site = "login.jsp";
-	    	response.sendRedirect(site);
-	   	}
-%>
-
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -137,51 +128,25 @@
 					</tr>
 				</table>
 			</div>
-			<%
-				//Create a connection string
-				String url = "jdbc:mysql://cs336-18.cs.rutgers.edu:3306/CS336_Project";
-		    	//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
-			    Class.forName("com.mysql.jdbc.Driver");
-		    	
-		    	//Create a connection to your DB
-			    Connection con = DriverManager.getConnection(url, "csuser", "csda0467");	
-		    	String current_user = (String) session.getAttribute("userid");
-		    	
-			    PreparedStatement st =null;
-			    ResultSet rs=null;
-			    String user= (String)session.getAttribute("userid");
-			    String quer="Select * FROM Message Where receiver = ?";
-			    
-			    try{
-			    st=con.prepareStatement(quer);
-			    st.setString(1,user);
-			    rs = st.executeQuery();
-			    }
-			    catch(SQLException c){
-			    	out.println("your sql is messed up");
-			    }
-				String message=null;
-				%>
-				<center>
-                <% 
-		   		while(rs.next()){
-		   			out.print("<div class=\"panel-heading\">"+rs.getString("sender")+":\t"+rs.getTimestamp("sentTime")+"</div>");
-					out.println("<div class = \"well\"");
-					out.println("<p>");
-					out.println(rs.getString("contents")); //get the title and print it out as a link
-					out.println("</p>");
-					out.println("</div>");
-					//out.println("</div>");
-					//out.println("<br>");
-				}
-				out.println("</div>"); %>
-				<a href= "sentMessages.jsp">Sent</a>
-				<br>
-				<a href= "searchRecieved.jsp">Search received messages </a>
-				
-		   			</center>
-			 
-		</body>
-	
-		
-</html>
+			<br>
+			<form method="post" action="searchSentMesImp.jsp">
+      	<center>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Search</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr> <td>Search for sent Messages containing keyword: </td>
+                        <td><input type="text" name="key" value="" /></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><input type="submit" value="Submit" /></td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+            </center>
+      </form> 

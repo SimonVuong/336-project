@@ -9,6 +9,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%//this DOC is for implementing search on threads %>
 <%
 	//if the user is not logged in as a mod, they will be sent to the login page;
 	if((String) session.getAttribute("userid")==null)
