@@ -21,5 +21,5 @@
     catch(SQLException c){
     	out.println("logic error");
     }
-    out.println("check");
+    out.println(check);
     %>
