@@ -162,28 +162,21 @@
 				String message=null;
 				%>
 				<center>
-            <table>
-                <thead>
-                    <tr>
-                        <th colspan="2">Messages</th>
-                    </tr>
-                </thead>
-                <tbody>
                 <% 
 		   		while(rs.next()){
-		   			message=rs.getString("contents");
-		   		
-		   			%>
-		   			<tr>
-		   			<td> <%=message %> </td>
-		   			</tr>
-		   			<%} %>
-		   			<tr>
-		   				<td> <a href= "sentMessages.jsp">Sent</a>
-		   		</tbody>
-		   		
-		   	</table>
-		    	
+		   			out.print("<div class=\"panel-heading\">"+rs.getString("sender")+":\t"+rs.getTimestamp("sentTime")+"</div>");
+					out.println("<div class = \"well\"");
+					out.println("<p>");
+					out.println(rs.getString("contents")); //get the title and print it out as a link
+					out.println("</p>");
+					out.println("</div>");
+					//out.println("</div>");
+					//out.println("<br>");
+				}
+				out.println("</div>"); %>
+				<a href= "sentMessages.jsp">Sent</a>
+				
+		   			</center>
 			 
 		</body>
 	

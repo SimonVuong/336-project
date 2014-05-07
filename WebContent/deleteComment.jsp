@@ -1,21 +1,24 @@
 <%@ page import ="java.sql.*" %>
 <%
-    int cID = Integer.ParseInt(request.getParameter("cID"));  
+    String temp = request.getParameter("cID"); 
+	int cID= Integer.parseInt(temp);
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = null;
     try{
     	con= DriverManager.getConnection("jdbc:mysql://localhost:3306/CS336_Project",
             "root", "csda0467");
     }
-    catch(Exceptrion e){
+    catch(Exception e){
     	out.println("connection failed");}
-    Statement st=con.createStatement;
-    ResultSet del=null;
+    PreparedStatement st=null;
+    String query="Delete From Comment Where cid= ?";
     try{
-    	del=executeQuery("delete from Comment where cid=" + cID);
+    	st=con.prepareStatement(query);
+    	st.setInt(1,cID);
+    	st.executeUpdate();
     }
-    catch(SQL Exception c){
+    catch(SQLException c){
     	out.println("logic error");
     }
-    
+    out.println("success!");
     %>

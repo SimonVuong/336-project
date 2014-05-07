@@ -98,7 +98,7 @@
             </table>
             </center>
       </form> 
-      <form method="post" action="verify.jsp">
+      <form method="post" action="editTitle.jsp">
       	<center>
             <table>
                 <thead>
