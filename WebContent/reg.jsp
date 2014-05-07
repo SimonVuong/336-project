@@ -91,10 +91,17 @@ body,table,td,th {
                         <p>User Name: <input type="text" name="uname" value="" /></p>
 
                         <p>Password: <input type="password" name="pass" value="" /></p>
-                        
+	                    <select name="interests">
+					    <option value="" disabled="disabled" selected="selected">Please select an interest</option>
+					    <option value="1">Horses</option>
+					    <option value="2">Swords</option>
+					    <option value="3">The Coming Winter</option>
+					    <option value="4">cars</option>
+					    <option value="5">socks</option>
+						</select>
                         <p><input type="submit" value="Submit" /></p>
                         <p><input type="reset" value="Reset" /></p>
-                    
+                    	
                         <p>Go back to Login: <a href="login.jsp">Login Here</a></p>
             </center>
         </form>
