@@ -103,7 +103,7 @@
 		{
 			seedid= rs.getInt("cid");
 			out.print("<div class=\"panel-heading\">");
-			out.println("<h4>Started By: "+rs.getString("user")+"<span class =\"pull-right\"><a href = \"DateSort.jsp?tid="+tid+"\">Sort by Date</a></span></h4>");
+			out.println("<h4>Started By: "+rs.getString("user")+"<span class =\"pull-right\"><a href = \"Comments.jsp?tid="+tid+"\">Sort by Votes</a></span></h4>");
 			out.println("Created: "+rs.getTimestamp("created"));
 			out.println(" Comment Id:"+rs.getInt("cid"));
 			out.println("Votes:"+rs.getInt("Votes"));
@@ -115,7 +115,7 @@
 			out.println("</div>");
 			out.println("<br>");
 		}
-		rs = st.executeQuery("select * from Comment where tid="+tid+" Order By votes desc;"); 
+		rs = st.executeQuery("select * from Comment where tid="+tid); 
 		while(rs.next())
 		{
 			if(seedid!=rs.getInt("cid"))

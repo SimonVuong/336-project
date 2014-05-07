@@ -131,6 +131,26 @@ body,table,td,th {
     	}
 
 	%>
+	<%if((String) session.getAttribute("userid")!=null){
+		String current_user = (String) session.getAttribute("userid");
+    	
+	    PreparedStatement st2 =null;
+	    ResultSet rs2=null;
+	    String user= (String)session.getAttribute("userid");
+	    String quer="Select * FROM Advertisement Where uname = ?";
+	    
+	    try{
+	    st2=con.prepareStatement(quer);
+	    st2.setString(1,user);
+	    rs2 = st2.executeQuery();
+	    }
+	    catch(SQLException c){
+	    	out.println("your sql is messed up");
+	    }
+	    while(rs2.next()){
+	    	
+	    }
+	} %>
 	</table>
 	
 	
